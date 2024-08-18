@@ -1,0 +1,106 @@
+$black: #151515;
+$white: #fefefe;
+$lightGrey: #bbbbbb;
+$grey: #383838;
+$overlay: rgba(21, 21, 21, 0.6);
+$fontXl: 5rem;
+$fontL: 3.0902rem;
+$fontM: 1.9099rem;
+$fontS: 1rem;
+$fontXs: 0.7rem;
+$whiteHover: hsla(0, 0%, 100%, 0.75);
+
+h2 {
+    font-size: $fontL;
+    color: $white;
+}
+p {
+    margin: 0;
+    color: $lightGrey;
+    font-size: $fontS;
+    font-family: JoanaMedium;
+}
+
+.hero {
+    min-height: calc(100vh - 65px);
+    h1 {
+        font-size: $fontXl;
+        color: $white;
+        margin: 0;
+    }
+
+    p {
+        margin: 0;
+        color: $lightGrey;
+        font-size: $fontS;
+    }
+
+    .projects_slider {
+        .slick-track {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+        }
+        .img_container {
+            height: 50vh;
+            overflow: hidden;
+            img {
+                image-rendering: optimizeSpeed;
+            }
+        }
+    }
+}
+
+.project_stat {
+    .stat {
+        font-size: $fontL;
+        font-family: ZawyaPro;
+        color: $white;
+    }
+
+    h2 {
+        font-size: $fontM;
+        color: $lightGrey;
+    }
+
+    .stat_desc {
+        font-size: $fontS;
+        color: $lightGrey;
+    }
+}
+
+.expertise {
+    ul {
+        color: $lightGrey;
+        li {
+            font-size: $fontS;
+        }
+    }
+}
+
+.projects {
+    a {
+        overflow: hidden;
+        color: $white;
+        background-color: $black;
+        &:hover {
+            color: $whiteHover;
+        }
+    }
+}
+
+.contact {
+    background-image: url("/public/assets/images/contact-bg.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    .image_overlay {
+        background-color: $overlay;
+    }
+
+    p {
+        color: $white;
+    }
+}

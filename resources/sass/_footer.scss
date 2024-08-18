@@ -1,0 +1,12 @@
+footer {
+    a,
+    p {
+        color: $white;
+        transition: 300ms ease-in;
+        text-decoration: none;
+    }
+
+    a:hover {
+        color: $white;
+    }
+}
