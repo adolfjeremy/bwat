@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\About;
 use App\Models\Header;
 use App\Models\Contact;
+use App\Models\HomeSeo;
 use App\Models\Project;
 use App\Models\TagLine;
 use App\Models\ImageSlider;
@@ -22,6 +23,7 @@ class HomeController extends Controller
         $contact = Contact::findOrFail(1);
         $projects = Project::latest()->take(3)->get();
         $header = Header::findOrFail(1);
+        $seo = HomeSeo::findOrFail(1);
         return View("pages.home", [
             "tag" => $tag,
             "sliders" => $sliders,
@@ -30,6 +32,7 @@ class HomeController extends Controller
             "contact" => $contact,
             "projects" => $projects,
             "header" => $header,
+            "seo" => $seo,
         ]);
     }
 }

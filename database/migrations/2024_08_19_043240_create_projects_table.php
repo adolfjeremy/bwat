@@ -17,11 +17,11 @@ return new class extends Migration
             $table->string("name");
             $table->string("year");
             $table->longText("about");
-            $table->string("about_image");
+            $table->string("about_image")->nullable();
             $table->longText("problem");
-            $table->string("problem_image");
+            $table->string("problem_image")->nullable();
             $table->longText("solution");
-            $table->string("solution_image");
+            $table->string("solution_image")->nullable();
             $table->timestamps();
         });
     }

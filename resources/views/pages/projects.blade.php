@@ -1,5 +1,14 @@
 @extends('layouts.app')
 
+@section('meta')
+<meta name="description" content="{{ $seo->description }}">
+<meta property="og:title" content="{{ $seo->title }}">
+<meta name="keywords" content="{{ $seo->keyword }}">
+<link rel="canonical" href="https://bwarchitecteam.id/">
+<title>{{ $seo->title }}</title>
+@endsection
+
+
 @section('page-style')
     @vite(['resources/sass/home.scss',])
 @endsection

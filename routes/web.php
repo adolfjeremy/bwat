@@ -35,7 +35,7 @@ Route::get("/projects/{id}", [ProjectsController::class, 'show'])->name("project
 
 
 Route::prefix('dashboard')
-// ->middleware(['auth'])
+->middleware(['auth'])
 ->group(function() {
     Route::get("/home", [DashboardHomeController::class, 'index'])->name("dashboard-home");
     Route::get("/home/hero", [DashboardHomeController::class, 'hero'])->name("home-hero");
