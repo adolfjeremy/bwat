@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('page-style')
-@vite(['resources/sass/project.scss',])
 @vite(['resources/sass/home.scss',])
 @endsection
 

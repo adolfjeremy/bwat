@@ -9,7 +9,6 @@ export default defineConfig({
                 "resources/js/app.jsx",
                 "resources/sass/home.scss",
                 "resources/sass/app.scss",
-                "resources/sass/projects.scss",
                 "resources/js/sideBar.js",
                 "resources/js/projectSlider.js",
             ],
