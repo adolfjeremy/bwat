@@ -1,20 +1,22 @@
 <header class="navbar">
     <nav class="container-fluid custom-padding">
-        <a class="navbar-brand" href="#">
-            <img src="/assets/images/logo.png" alt="Bootstrap" width="80">
+        <a class="navbar-brand" href="{{ route("home") }}">
+            <img src="{{ asset("storage/" . $header->logo) }}" alt="Bootstrap" width="80">
         </a>
         <button class="hamburger d-block d-xl-none" type="button" aria-expanded="false" aria-label="Toggle navigation">
             <span class="inner-line"></span>
         </button>
         <ul class="d-xl-flex d-none gap-4 link_list">
             <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="{{ route("home") }}">Home</a>
+                <a class="nav-link{{ (request()->is('/') ? " active" : "") }}" aria-current="page" href="{{ route("home") }}">Home</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{ route("projects") }}">Projects</a>
+                <a class="nav-link{{ (request()->is('projects*') ? " active" : "") }}" href="{{ route("projects") }}">Projects</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Service</a>
+                <a href="{{ $contact->url }}" target="_blank" rel="noopener noreferer" class="btn btn-sm btn-cust">
+                    {{ $contact->button }}
+                </a>
             </li>
         </ul>
     </nav>

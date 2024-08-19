@@ -12,16 +12,25 @@ import List from "@mui/material/List";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
+import { ListItem } from "@mui/material";
 import Collapse from "@mui/material/Collapse";
 import MenuIcon from "@mui/icons-material/Menu";
 import ExpandLess from "@mui/icons-material/ExpandLess";
 import ExpandMore from "@mui/icons-material/ExpandMore";
 import PagesIcon from "@mui/icons-material/Pages";
 import HomeIcon from "@mui/icons-material/Home";
+import MapsHomeWorkIcon from "@mui/icons-material/MapsHomeWork";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import AlertBar from "@/Components/AlertBar";
 import Spinner from "@/Components/Spinner";
+import PentagonIcon from "@mui/icons-material/Pentagon";
+import AdjustIcon from "@mui/icons-material/Adjust";
+import WorkIcon from "@mui/icons-material/Work";
+import ContactPageIcon from "@mui/icons-material/ContactPage";
+import FormatListNumberedRtlIcon from "@mui/icons-material/FormatListNumberedRtl";
+import TuneIcon from "@mui/icons-material/Tune";
+import ViewWeekIcon from "@mui/icons-material/ViewWeek";
 
 const drawerWidth = 300;
 
@@ -29,6 +38,7 @@ function Layouts({ children, heading }) {
     const [mobileOpen, setMobileOpen] = useState(false);
     const [isClosing, setIsClosing] = useState(false);
     const [open, setOpen] = useState(true);
+    const [buka, setBuka] = useState(true);
     const { spinnerState } = useContext(SpinnerContext);
     const { alertState } = useContext(AlertContext);
 
@@ -55,26 +65,108 @@ function Layouts({ children, heading }) {
         <div>
             <Toolbar />
             <Divider />
+            <ListItem
+                disablePadding
+                onClick={() => router.visit(route("dashboard-header"))}
+            >
+                <ListItemButton>
+                    <ListItemIcon>
+                        <ViewWeekIcon />
+                    </ListItemIcon>
+                    <ListItemText primary="Logo" />
+                </ListItemButton>
+            </ListItem>
+            <Divider />
             <List>
                 <ListItemButton onClick={handleClick}>
                     <ListItemIcon>
                         <PagesIcon />
                     </ListItemIcon>
-                    <ListItemText primary="Pages" />
+                    <ListItemText primary="Home" />
                     {open ? <ExpandLess /> : <ExpandMore />}
                 </ListItemButton>
                 <Collapse in={open} timeout="auto" unmountOnExit>
                     <List component="div" disablePadding>
                         <ListItemButton
+                            onClick={() => router.visit(route("home-hero"))}
+                            sx={{ pl: 4 }}
+                        >
+                            <ListItemIcon>
+                                <PentagonIcon />
+                            </ListItemIcon>
+                            <ListItemText primary="Hero" />
+                        </ListItemButton>
+                        <ListItemButton
+                            onClick={() => router.visit(route("home-about"))}
+                            sx={{ pl: 4 }}
+                        >
+                            <ListItemIcon>
+                                <AdjustIcon />
+                            </ListItemIcon>
+                            <ListItemText primary="About" />
+                        </ListItemButton>
+                        <ListItemButton
                             onClick={() =>
-                                router.visit(route("dashboard-home"))
+                                router.visit(route("home-project-completed"))
                             }
                             sx={{ pl: 4 }}
                         >
                             <ListItemIcon>
-                                <HomeIcon />
+                                <WorkIcon />
                             </ListItemIcon>
-                            <ListItemText primary="Home" />
+                            <ListItemText primary="Project Completed" />
+                        </ListItemButton>
+                        <ListItemButton
+                            onClick={() => router.visit(route("home-contact"))}
+                            sx={{ pl: 4 }}
+                        >
+                            <ListItemIcon>
+                                <ContactPageIcon />
+                            </ListItemIcon>
+                            <ListItemText primary="Contact" />
+                        </ListItemButton>
+                        <ListItemButton
+                            onClick={() => router.visit(route("home-seo"))}
+                            sx={{ pl: 4 }}
+                        >
+                            <ListItemIcon>
+                                <TuneIcon />
+                            </ListItemIcon>
+                            <ListItemText primary="SEO" />
+                        </ListItemButton>
+                    </List>
+                </Collapse>
+            </List>
+            <Divider />
+            <List>
+                <ListItemButton onClick={() => setBuka(!buka)}>
+                    <ListItemIcon>
+                        <WorkIcon />
+                    </ListItemIcon>
+                    <ListItemText primary="Projects" />
+                    {buka ? <ExpandLess /> : <ExpandMore />}
+                </ListItemButton>
+                <Collapse in={buka} timeout="auto" unmountOnExit>
+                    <List component="div" disablePadding>
+                        <ListItemButton
+                            onClick={() =>
+                                router.visit(route("dashboard-project"))
+                            }
+                            sx={{ pl: 4 }}
+                        >
+                            <ListItemIcon>
+                                <FormatListNumberedRtlIcon />
+                            </ListItemIcon>
+                            <ListItemText primary="Project List" />
+                        </ListItemButton>
+                        <ListItemButton
+                            onClick={() => router.visit(route("project-seo"))}
+                            sx={{ pl: 4 }}
+                        >
+                            <ListItemIcon>
+                                <TuneIcon />
+                            </ListItemIcon>
+                            <ListItemText primary="SEO" />
                         </ListItemButton>
                     </List>
                 </Collapse>

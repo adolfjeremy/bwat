@@ -1,0 +1,29 @@
+@font-face {
+    font-family: JoanaNormal;
+    src: url("/public/assets/fonts/JoannaNormal.TTF");
+}
+
+.project_hero {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: calc(100vh - 51px);
+
+    @media (max-width: 824px) {
+        height: calc(50vh - 51px);
+    }
+}
+
+.project_description {
+    h1,
+    h2,
+    h3,
+    h4 {
+        color: #fefefe;
+    }
+    p {
+        font-family: JoanaNormal;
+        font-weight: 500;
+        color: #bbbbbb;
+    }
+}

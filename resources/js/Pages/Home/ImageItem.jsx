@@ -21,7 +21,6 @@ function ImageItem({ image, id }) {
             },
             onError: () => {
                 toggleSpinner(false);
-                console.log(errors);
             },
         });
     };

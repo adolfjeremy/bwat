@@ -7,7 +7,6 @@ import { AlertContext } from "@/Context/AlertContext";
 function AlertBar() {
     const { alertState, toggleAlert } = useContext(AlertContext);
     const { flashMessage } = usePage().props;
-    console.log(flashMessage);
 
     return (
         <Snackbar

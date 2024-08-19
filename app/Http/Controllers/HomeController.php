@@ -2,12 +2,34 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\About;
+use App\Models\Header;
+use App\Models\Contact;
+use App\Models\Project;
+use App\Models\TagLine;
+use App\Models\ImageSlider;
 use Illuminate\Http\Request;
+use App\Models\ProjectCompletion;
 
 class HomeController extends Controller
 {
     public function index()
     {
-        return View("pages.home");
+        $tag = TagLine::findOrFail(1);
+        $sliders = ImageSlider::all();
+        $completed = ProjectCompletion::findOrFail(1);
+        $about = About::findOrFail(1);
+        $contact = Contact::findOrFail(1);
+        $projects = Project::latest()->take(3)->get();
+        $header = Header::findOrFail(1);
+        return View("pages.home", [
+            "tag" => $tag,
+            "sliders" => $sliders,
+            "completed" => $completed,
+            "about" => $about,
+            "contact" => $contact,
+            "projects" => $projects,
+            "header" => $header,
+        ]);
     }
 }

@@ -5,17 +5,16 @@ import { AlertContext } from "@/Context/AlertContext";
 import { Box, TextField, Button } from "@mui/material";
 import Layouts from "@/Layouts/Layouts";
 
-function About() {
+function Header() {
     const { item } = usePage().props;
     const { toggleSpinner } = useContext(SpinnerContext);
     const { toggleAlert } = useContext(AlertContext);
     const { data, setData, post } = useForm({
-        heading: item.heading,
-        description: item.description,
+        logo: null,
     });
     const onHandleSubmit = (e) => {
         e.preventDefault();
-        post(route("about-update"), {
+        post(route("header-update"), {
             onStart: () => {
                 toggleSpinner(true);
             },
@@ -26,7 +25,7 @@ function About() {
         });
     };
     return (
-        <Layouts heading="Home Page - About Section">
+        <Layouts heading="Website - Logo">
             <Box sx={{ display: "flex", flexDirection: "column" }}>
                 <form
                     onSubmit={onHandleSubmit}
@@ -38,36 +37,23 @@ function About() {
                         gap: 20,
                     }}
                 >
-                    <TextField
-                        id="outlined-basic"
-                        label="Heading"
-                        variant="outlined"
-                        name="heading"
-                        sx={{ width: "100%" }}
-                        value={data.heading}
-                        required
-                        onChange={(e) => setData("heading", e.target.value)}
-                    />
-                    <TextField
-                        id="outlined-multiline-flexible"
-                        label="Description"
-                        multiline
-                        minRows={4}
-                        sx={{ mt: 2, width: "100%" }}
-                        name="description"
-                        value={data.description}
-                        onChange={(e) => setData("description", e.target.value)}
-                        required
-                    />
-                    <TextField
-                        id="outlined-basic"
-                        variant="outlined"
-                        name="image"
-                        onChange={(e) => setData("image", e.target.files[0])}
-                        type="file"
-                        sx={{ width: "100%", mt: 2 }}
-                        required
-                    />
+                    <Box
+                        sx={{
+                            width: "100%",
+                            mt: 1,
+                            display: "flex",
+                            flexDirection: "column",
+                        }}
+                    >
+                        <label htmlFor="logo">Logo</label>
+                        <TextField
+                            id="logo"
+                            variant="outlined"
+                            name="logo"
+                            onChange={(e) => setData("logo", e.target.files[0])}
+                            type="file"
+                        />
+                    </Box>
                     <Button
                         variant="contained"
                         component="button"
@@ -81,4 +67,4 @@ function About() {
     );
 }
 
-export default About;
+export default Header;

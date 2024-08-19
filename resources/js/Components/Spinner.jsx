@@ -6,7 +6,7 @@ function Spinner() {
     return (
         <Box
             sx={{
-                position: "absolute",
+                position: "fixed",
                 inset: 0,
                 backgroundColor: "rgba(21, 21, 21, 0.2)",
                 zIndex: 1400,

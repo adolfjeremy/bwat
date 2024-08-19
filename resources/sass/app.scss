@@ -7,6 +7,7 @@ $black: #151515;
 $overlay: rgba(21, 21, 21, 0.6);
 $white: #fefefe;
 $whiteHover: hsla(0, 0%, 100%, 0.75);
+$lightGrey: #bbbbbb;
 $grey: #383838;
 $fontXl: 5rem;
 $fontL: 3.0902rem;
@@ -94,6 +95,9 @@ header {
     a {
         font-family: JoanaBold;
     }
+    .btn-cust {
+        color: $black !important;
+    }
     button {
         position: relative;
         background-color: transparent;
@@ -142,7 +146,7 @@ header {
 
     .link_list {
         a {
-            color: $grey;
+            color: $lightGrey;
             &:hover {
                 color: $white;
             }
@@ -157,8 +161,8 @@ header {
         background: linear-gradient(
             90deg,
             rgba(165, 114, 240, 0),
-            rgba(0, 90, 150, 0.72),
-            #005b96 90%
+            rgba(2, 69, 117, 0.7),
+            #02416b 90%
         );
 
         right: -70vw;
@@ -167,7 +171,7 @@ header {
     }
     .mobile_nav,
     .mobile_nav_overlay {
-        position: absolute !important;
+        position: fixed !important;
         top: 0;
         height: 100vh;
         width: 70vw;

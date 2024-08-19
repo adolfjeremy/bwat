@@ -16,6 +16,8 @@ use App\Http\Requests\TagLineRequest;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\ImageSliderRequest;
 use App\Http\Requests\ProjectCompletionRequest;
+use App\Models\Header;
+use App\Models\HomeSeo;
 
 class HomeController extends Controller
 {
@@ -152,6 +154,53 @@ class HomeController extends Controller
         $contact->update($data);
         return redirect()->back()->with([
             'message' => "Contact section Saved successfully",
+            'type' => 'success'
+        ]);
+
+    }
+
+    public function seo()
+    {
+        $item = HomeSeo::findOrFail(1);
+        return Inertia::render('Home/Seo', [
+            "item" => $item
+        ]);
+    }
+    public function seoUpdate(Request $request)
+    {
+        $data = $request->all();
+        $item = HomeSeo::findOrFail(1);
+        
+        $item->update($data);
+        return redirect()->back()->with([
+            'message' => "SEO Saved successfully",
+            'type' => 'success'
+        ]);
+    }
+
+    public function header()
+    {
+        $item = Header::findOrFail(1);
+        return Inertia::render('Header/Header', [
+            "item" => $item
+        ]);
+    }
+
+    public function headerUpdate(Request $request)
+    {
+        $data = $request->all();
+        $contact = Header::findOrFail(1);
+        if($request->file('logo'))
+        {
+            if($request->oldImage)
+            {
+                Storage::delete($request->oldImage);
+            }
+            $data['logo'] = $request->file('logo')->store('logo');
+        }
+        $contact->update($data);
+        return redirect()->back()->with([
+            'message' => "Header Saved successfully",
             'type' => 'success'
         ]);
 

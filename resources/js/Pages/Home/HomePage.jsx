@@ -2,12 +2,9 @@ import React from "react";
 import Layouts from "@/Layouts/Layouts";
 import { Head } from "@inertiajs/react";
 import { Box } from "@mui/material";
-import { useTheme } from "@mui/material";
 import BoxItem from "@/Components/BoxItem";
 
 function HomePage() {
-    const theme = useTheme();
-
     return (
         <Layouts heading="Home Page">
             <Head title="Dashboard" />

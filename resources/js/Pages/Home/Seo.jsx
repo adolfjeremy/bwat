@@ -5,19 +5,18 @@ import { AlertContext } from "@/Context/AlertContext";
 import { Box, TextField, Button } from "@mui/material";
 import Layouts from "@/Layouts/Layouts";
 
-function Contact() {
+function Seo() {
     const { item } = usePage().props;
     const { toggleSpinner } = useContext(SpinnerContext);
     const { toggleAlert } = useContext(AlertContext);
     const { data, setData, post } = useForm({
-        heading: item.heading,
-        button: item.button,
-        url: item.url,
+        title: item.title,
+        keyword: item.keyword,
         description: item.description,
     });
     const onHandleSubmit = (e) => {
         e.preventDefault();
-        post(route("contact-update"), {
+        post(route("seo-update"), {
             onStart: () => {
                 toggleSpinner(true);
             },
@@ -28,7 +27,7 @@ function Contact() {
         });
     };
     return (
-        <Layouts heading="Home Page - Contact">
+        <Layouts heading="Home Page - SEO">
             <Box sx={{ display: "flex", flexDirection: "column" }}>
                 <form
                     onSubmit={onHandleSubmit}
@@ -42,53 +41,33 @@ function Contact() {
                 >
                     <TextField
                         id="outlined-basic"
-                        label="Heading"
+                        label="Page Title"
                         variant="outlined"
-                        name="heading"
+                        name="title"
                         sx={{ width: "100%" }}
-                        value={data.heading}
+                        value={data.title}
                         required
-                        onChange={(e) => setData("heading", e.target.value)}
+                        onChange={(e) => setData("title", e.target.value)}
                     />
                     <TextField
-                        id="outlined-multiline-flexible"
-                        label="Description"
-                        multiline
-                        minRows={4}
-                        sx={{ mt: 2, width: "100%" }}
+                        id="outlined-basic"
+                        label="Page Keyword"
+                        variant="outlined"
+                        name="keyword"
+                        sx={{ width: "100%" }}
+                        value={data.keyword}
+                        required
+                        onChange={(e) => setData("keyword", e.target.value)}
+                    />
+                    <TextField
+                        id="outlined-basic"
+                        label="Page Description"
+                        variant="outlined"
                         name="description"
+                        sx={{ width: "100%" }}
                         value={data.description}
+                        required
                         onChange={(e) => setData("description", e.target.value)}
-                        required
-                    />
-                    <TextField
-                        id="outlined-basic"
-                        label="Button"
-                        variant="outlined"
-                        name="button"
-                        sx={{ width: "100%" }}
-                        value={data.button}
-                        required
-                        onChange={(e) => setData("button", e.target.value)}
-                    />
-
-                    <TextField
-                        id="outlined-basic"
-                        label="Contact Url"
-                        variant="outlined"
-                        name="url"
-                        sx={{ width: "100%" }}
-                        value={data.url}
-                        required
-                        onChange={(e) => setData("url", e.target.value)}
-                    />
-                    <TextField
-                        id="outlined-basic"
-                        variant="outlined"
-                        name="image"
-                        onChange={(e) => setData("image", e.target.files[0])}
-                        type="file"
-                        sx={{ width: "100%", mt: 2 }}
                     />
                     <Button
                         variant="contained"
@@ -103,4 +82,4 @@ function Contact() {
     );
 }
 
-export default Contact;
+export default Seo;

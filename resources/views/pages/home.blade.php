@@ -5,37 +5,43 @@
 @endsection
 
 @section('content')
-    <section class="hero">
+    <section class="hero pt-4">
         <div class="container-fluid custom-padding">
-            <div class="row pt-3 pb-3">
-                <div class="col-8 d-flex align-items-end">
-                    <h1>Explore Our<br>Architectural Legacy</h1>
+            <div class="row pt-3 pb-3 d-flex align-items-end justify-content-between">
+                <div class="col-12 col-md-6 d-flex align-items-end">
+                    <h1>{{ $tag->tag }}</h1>
                 </div>
-                <div class="col-4 d-flex align-items-end">
+                <div class="col-12 col-md-4 mt-3 mt-md-0 d-flex align-items-end">
                     <p>
-                        We are thrilled with the outcome of the project and the level of service
-                        provided by your team. Your expertise are a credit to your organization.
+                        {{ $tag->short_description }}
                     </p>
+                </div>
+                <div class="col-12 col-md-4 mt-3 mt-md-0 d-flex d-md-none align-items-end">
+                    <a href="{{ $contact->url }}" target="_blank" rel="noopener noreferer" class="btn btn-sm btn-cust mt-3">
+                        {{ $contact->button }}
+                    </a>
                 </div>
             </div>
             <div class="row projects_slider mt-3">
-                <div class="img_container">
-                    <img src="/assets/images/1.png" alt="buildings" class="w-100">
+                @foreach ($sliders as $item)
+                    <div class="img_container">
+                        <img src="{{ asset("storage/" . $item->image) }}" alt="{{ $item->alt }}" class="w-100">
+                    </div>
+                @endforeach
+            </div>
+        </div>
+    </section>
+    <section class="py-5">
+        <div class="container-fluid custom-padding">
+            <div class="row">
+                <div class="col-12 col-md-6 d-flex flex-column justify-content-center align-items-start gap-1">
+                    <h2>{{ $about->heading }}</h2>
+                    <p class="stat_desc">
+                        {{ $about->description }}
+                    </p>
                 </div>
-                <div class="img_container">
-                    <img src="/assets/images/2.png" alt="buildings" class="w-100">
-                </div>
-                <div class="img_container">
-                    <img src="/assets/images/3.png" alt="buildings" class="w-100">
-                </div>
-                <div class="img_container">
-                    <img src="/assets/images/1.png" alt="buildings" class="w-100">
-                </div>
-                <div class="img_container">
-                    <img src="/assets/images/2.png" alt="buildings" class="w-100">
-                </div>
-                <div class="img_container">
-                    <img src="/assets/images/3.png" alt="buildings" class="w-100">
+                <div class="col-12 col-md-6 d-flex align-items-center justify-content-center mt-4 mt-md-0">
+                    <img src="{{ asset("storage/" . $about->image) }}" alt="cool house" class="w-100">
                 </div>
             </div>
         </div>
@@ -43,25 +49,20 @@
     <section class="project_stat py-5">
         <div class="container-fluid custom-padding">
             <div class="row">
-                <div class="col-12 col-md-6 d-flex flex-column justify-content-center align-items-start gap-1">
-                    <p class="stat">15K</p>
-                    <h2>Project Completed</h2>
-                    <p class="stat_desc">
-                        Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                        Excepturi quo necessitatibus architecto odit odio quas
-                        eveniet animi inventore exercitationem nostrum placeat
-                        quam cupiditate, in non fuga voluptatibus eum, laborum
-                        beatae.Doloremque impedit nemo vitae consequuntur tempore
-                        fugit ullam aperiam labore in, fugiat, temporibus unde nihil
-                    </p>
+                <div class="col-12 col-md-6 mb-4 mb-md-0 d-flex align-items-center justify-content-center">
+                    <img src="{{ asset("storage/" . $completed->image) }}" alt="cool house" class="w-100">
                 </div>
-                <div class="col-12 col-md-6">
-                    <img src="/assets/images/projects.jpg" alt="cool house" class="w-100">
+                <div class="col-12 col-md-6 d-flex flex-column justify-content-center align-items-start gap-1">
+                    <p class="stat">{{ $completed->project_completed }}</p>
+                    <h2>{{ $completed->heading }}</h2>
+                    <p class="stat_desc">
+                        {{ $completed->description }}
+                    </p>
                 </div>
             </div>
         </div>
     </section>
-    <section class="expertise py-5">
+    {{-- <section class="expertise py-5">
         <div class="container-fluid custom-padding">
             <div class="row">
                 <div class="col-12 col-md-6">
@@ -88,63 +89,29 @@
                 </div>
             </div>
         </div>
-    </section>
-    <section class="py-5">
-        <div class="container-fluid custom-padding">
-            <div class="row">
-                <div class="col-12 col-md-6 d-flex flex-column justify-content-center align-items-start gap-1">
-                    <h2>About Us</h2>
-                    <p class="stat_desc">
-                        Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                        Excepturi quo necessitatibus architecto odit odio quas
-                        eveniet animi inventore exercitationem nostrum placeat
-                        quam cupiditate, in non fuga voluptatibus eum, laborum
-                        beatae.Doloremque impedit nemo vitae consequuntur tempore
-                        fugit ullam aperiam labore in, fugiat, temporibus unde nihil
-                        <br>
-                        quam cupiditate, in non fuga voluptatibus eum, laborum
-                        beatae.Doloremque impedit nemo vitae consequuntur tempore
-                    </p>
-                    <a href="{{ route("home") }}" class="btn btn-sm btn-cust mt-3">
-                        Show More
-                    </a>
-                </div>
-                <div class="col-12 col-md-6">
-                    <img src="/assets/images/about-img.jpg" alt="cool house" class="w-100">
-                </div>
-            </div>
-        </div>
-    </section>
+    </section> --}}
     <section class="projects py-5">
         <div class="container-fluid custom-padding">
             <div class="row">
-                <div class="col-3">
-                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eaque repellat illo excepturi rerum fuga rem eius unde.</p>
-                    <a href="{{ route('home') }}" class="btn btn-link p-0">See all projects</a>
-                </div>
-                <div class="col-9 d-flex align-item-center justify-content-end">
+                <div class="col-12 text-center text-md-start col-md-9 d-flex align-items-center justify-content-between justify-content-md-start">
                     <h2>Our Projects <br> We Worked On</h2>
+                    <a href="{{ route('projects') }}" class="btn btn-link p-0 d-block d-md-none">See all projects</a>
                 </div>
+                <div class="col-12 col-md-3 text-md-end text-center">
+                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eaque repellat illo excepturi rerum fuga rem eius unde.</p>
+                    <a href="{{ route('projects') }}" class="btn btn-link p-0 d-none d-md-block text-end">See all projects</a>
+                </div>
+                
             </div>
-            <div class="row mt-3">
-                <a href="{{ route("home") }}" class="col-4 image_wrapper position-relative">
+            <div class="row mt-5">
+                @foreach ($projects as $item)
+                    <a href="{{ route("project-detail", $item->slug) }}" class="col-4 image_wrapper position-relative">
                     <div class="image_overlay d-flex align-items-center justify-content-center">
                         <i class="bi bi-arrow-up-right-circle-fill position-relative"></i>
                     </div>
-                    <img src="/assets/images/tes.jpg" alt="" class="w-100">
+                    <img src="{{ asset("storage/" . $item->thumbnail) }}" alt="" class="w-100">
                 </a>
-                <a href="{{ route("home") }}" class="col-4 image_wrapper position-relative">
-                    <div class="image_overlay d-flex align-items-center justify-content-center">
-                        <i class="bi bi-arrow-up-right-circle-fill position-relative"></i>
-                    </div>
-                    <img src="/assets/images/tes.jpg" alt="" class="w-100">
-                </a>
-                <a href="{{ route("home") }}" class="col-4 image_wrapper position-relative">
-                    <div class="image_overlay d-flex align-items-center justify-content-center">
-                        <i class="bi bi-arrow-up-right-circle-fill position-relative"></i>
-                    </div>
-                    <img src="/assets/images/tes.jpg" alt="" class="w-100">
-                </a>
+                @endforeach
             </div>
         </div>
     </section>
@@ -152,11 +119,11 @@
         <div class="image_overlay"></div>
         <div class="container-fluid custom-padding">
             <div class="row">
-                <div class="col-12 py-5 position-relative d-flex flex-column align-items-center justify-content-center gap-2">
-                    <h2>Engaged with our Expert Architects</h2>
-                    <p>Schedule a consultation Today</p>
-                    <a href="{{ route("home") }}" class="btn btn-sm btn-cust mt-3">
-                        Book Now
+                <div class="col-12 py-5 position-relative text-center d-flex flex-column align-items-center justify-content-center gap-2">
+                    <h2>{{ $contact->heading }}</h2>
+                    <p>{{ $contact->description }}</p>
+                    <a href="{{ $contact->url }}" target="_blank" rel="noopener noreferer" class="btn btn-sm btn-cust mt-3">
+                        {{ $contact->button }}
                     </a>
                 </div>
             </div>
