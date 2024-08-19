@@ -44,7 +44,7 @@ function ImageItem({ image, id }) {
                 }}
             ></Box>
             <img
-                src={`/storage/${image}`}
+                src={route("home")`/storage/${image}`}
                 className="w-100 position-relative"
             />
             <IconButton
