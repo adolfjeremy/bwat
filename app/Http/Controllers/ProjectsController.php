@@ -32,7 +32,7 @@ class ProjectsController extends Controller
         $contact = Contact::findOrFail(1);
         $header = Header::findOrFail(1);
         $seo = ProjectSeo::findOrFail(1);
-        return View("pages.projectDetail", [
+        return View("pages/ProjectDetail", [
             "item" => $item,
             "contact" => $contact,
             "header" => $header,
