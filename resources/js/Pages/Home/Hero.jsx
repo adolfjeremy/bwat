@@ -15,6 +15,7 @@ function Hero() {
         tag: tagLine.tag,
         short_description: tagLine.short_description,
     });
+    console.log(sliders);
     const onHandleOnBlur = (e) => {
         e.preventDefault();
         post(route("hero-post"), {

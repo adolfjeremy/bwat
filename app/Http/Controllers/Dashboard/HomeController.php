@@ -54,7 +54,7 @@ class HomeController extends Controller
 
         if($request->file('image'))
         {
-            $data['image'] = $request->file('image')->store('image-slider');
+            $data['image'] = $request->file('image')->store('public/image-slider');
         }
         ImageSlider::create($data);
         return redirect()->back()->with([
