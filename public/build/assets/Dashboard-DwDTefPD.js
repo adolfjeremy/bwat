@@ -1,0 +1,1 @@
+import{j as r,Y as o}from"./app-C8iNXUdj.js";import{L as t}from"./Layouts-DJ4XlTpw.js";import{T as s}from"./Grow-L6CTCnwh.js";import"./_commonjsHelpers-BosuxZz1.js";import"./ButtonBase-Wu5XEMiL.js";import"./createSvgIcon-CbTC11SY.js";function u({auth:a}){return r.jsxs(t,{children:[r.jsx(o,{title:"Dashboard"}),r.jsx(s,{children:"Tes"})]})}export{u as default};

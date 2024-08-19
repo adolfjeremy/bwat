@@ -24,6 +24,7 @@ function ImageItem({ image, id }) {
             },
         });
     };
+
     return (
         <Box
             onMouseOver={() => setHover(true)}
@@ -44,7 +45,7 @@ function ImageItem({ image, id }) {
                 }}
             ></Box>
             <img
-                src={route("home")`/storage/${image}`}
+                src={`https://bwarchitecteam.id/storage/${image}`}
                 className="w-100 position-relative"
             />
             <IconButton
