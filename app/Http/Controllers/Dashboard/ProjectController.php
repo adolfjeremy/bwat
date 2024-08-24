@@ -64,11 +64,19 @@ class ProjectController extends Controller
         $project = Project::findOrFail($id);
         if($request->file('thumbnail'))
         {
-            if($request->oldImage)
-            {
-                Storage::delete($request->oldImage);
-            }
             $data['thumbnail'] = $request->file('thumbnail')->store('project');
+        }
+        if($request->file('about_image'))
+        {
+            $data['about_image'] = $request->file('about_image')->store('project');
+        }
+        if($request->file('problem_image'))
+        {
+            $data['problem_image'] = $request->file('problem_image')->store('project');
+        }
+        if($request->file('solution_image'))
+        {
+            $data['solution_image'] = $request->file('solution_image')->store('project');
         }
         $data['slug'] = Str::slug($request->name);
         $project->update($data);
