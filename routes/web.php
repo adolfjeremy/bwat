@@ -55,9 +55,12 @@ Route::prefix('dashboard')
     Route::post("/projects", [ProjectController::class, 'store'])->name("project-post");
     Route::get("/projects/{id}", [ProjectController::class, 'show'])->name("project-show");
     Route::post("/projects/{id}", [ProjectController::class, 'update'])->name("project-update");
+    Route::DELETE("/project/{id}/destroy", [ProjectController::class, 'projectDestroy'])->name("project-destroy");
     Route::get("/project/create", [ProjectController::class, 'create'])->name("project-create");
     Route::get("/project/seo", [ProjectController::class, 'seo'])->name("project-seo");
     Route::post("/project/seo", [ProjectController::class, 'seoUpdate'])->name("seo-project-update");
+    Route::get("/project/heading", [ProjectController::class, 'heading'])->name("project-heading");
+    Route::post("/project/heading", [ProjectController::class, 'headingUpdate'])->name("project-heading-update");
 
     Route::get("/logo", [DashboardHomeController::class, 'header'])->name("dashboard-header");
     Route::post("/logo", [DashboardHomeController::class, 'headerUpdate'])->name("header-update");

@@ -50,7 +50,7 @@
         </div>
     </div>
 </section>
-<section class="contact position-relative py-5">
+<section class="contact position-relative py-5" style="background-image: url({{ asset("storage/" . $contact->image) }}>
     <div class="image_overlay"></div>
     <div class="container-fluid custom-padding">
         <div class="row">

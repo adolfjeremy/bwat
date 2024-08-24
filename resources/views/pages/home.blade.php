@@ -102,11 +102,11 @@
         <div class="container-fluid custom-padding">
             <div class="row">
                 <div class="col-12 text-center text-md-start col-md-9 d-flex align-items-center justify-content-between justify-content-md-start">
-                    <h2>Our Projects <br> We Worked On</h2>
+                    <h2>{{ $projectHeading->heading }}</h2>
                     <a href="{{ route('projects') }}" class="btn btn-link p-0 d-block d-md-none">See all projects</a>
                 </div>
                 <div class="col-12 col-md-3 text-md-end text-center">
-                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eaque repellat illo excepturi rerum fuga rem eius unde.</p>
+                    <p>{{ $projectHeading->short_description }}</p>
                     <a href="{{ route('projects') }}" class="btn btn-link p-0 d-none d-md-block text-end">See all projects</a>
                 </div>
                 
@@ -123,7 +123,7 @@
             </div>
         </div>
     </section>
-    <section class="contact position-relative py-5">
+    <section class="contact position-relative py-5" style="background-image: url({{ asset("storage/" . $contact->image) }})">
         <div class="image_overlay"></div>
         <div class="container-fluid custom-padding">
             <div class="row">

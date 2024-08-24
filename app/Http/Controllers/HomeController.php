@@ -11,6 +11,7 @@ use App\Models\TagLine;
 use App\Models\ImageSlider;
 use Illuminate\Http\Request;
 use App\Models\ProjectCompletion;
+use App\Models\ProjectHeading;
 
 class HomeController extends Controller
 {
@@ -23,6 +24,7 @@ class HomeController extends Controller
         $contact = Contact::findOrFail(1);
         $projects = Project::latest()->take(3)->get();
         $header = Header::findOrFail(1);
+        $projectHeading = ProjectHeading::findOrFail(1);
         $seo = HomeSeo::findOrFail(1);
         return View("pages.home", [
             "tag" => $tag,
@@ -32,6 +34,7 @@ class HomeController extends Controller
             "contact" => $contact,
             "projects" => $projects,
             "header" => $header,
+            "projectHeading" => $projectHeading,
             "seo" => $seo,
         ]);
     }

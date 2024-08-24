@@ -8,6 +8,7 @@ use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ProjectRequest;
+use App\Models\ProjectHeading;
 use App\Models\ProjectSeo;
 use Illuminate\Support\Facades\Storage;
 
@@ -92,6 +93,21 @@ class ProjectController extends Controller
         return Inertia::render('Projects/ProjectCreate');
     }
 
+    public function projectDestroy($id)
+    {
+        $item = Project::findOrFail($id);
+        Storage::delete($item->thumbnail);
+        Storage::delete($item->about_image);
+        Storage::delete($item->problem_image);
+        Storage::delete($item->solution_image);
+        $item->delete();
+
+        return redirect(route("dashboard-project"))->with([
+            'message' => "Project deleted successfully",
+            'type' => 'success'
+        ]);;
+    }
+
     public function seo()
     {
         $item = ProjectSeo::findOrFail(1);
@@ -99,6 +115,27 @@ class ProjectController extends Controller
             "item" => $item
         ]);
     }
+
+    public function heading()
+    {
+        $item = ProjectHeading::findOrFail(1);
+        return Inertia::render('Projects/ProjectHeading', [
+            "item" => $item
+        ]);
+    }
+
+    public function headingUpdate(Request $request)
+    {
+        $data = $request->all();
+        $item = ProjectHeading::findOrFail(1);
+        
+        $item->update($data);
+        return redirect()->back()->with([
+            'message' => "Project Heading Saved successfully",
+            'type' => 'success'
+        ]);
+    }
+
     public function seoUpdate(Request $request)
     {
         $data = $request->all();

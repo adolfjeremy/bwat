@@ -31,6 +31,7 @@ import ContactPageIcon from "@mui/icons-material/ContactPage";
 import FormatListNumberedRtlIcon from "@mui/icons-material/FormatListNumberedRtl";
 import TuneIcon from "@mui/icons-material/Tune";
 import ViewWeekIcon from "@mui/icons-material/ViewWeek";
+import TitleIcon from "@mui/icons-material/Title";
 
 const drawerWidth = 300;
 
@@ -148,6 +149,17 @@ function Layouts({ children, heading }) {
                 </ListItemButton>
                 <Collapse in={buka} timeout="auto" unmountOnExit>
                     <List component="div" disablePadding>
+                        <ListItemButton
+                            onClick={() =>
+                                router.visit(route("project-heading"))
+                            }
+                            sx={{ pl: 4 }}
+                        >
+                            <ListItemIcon>
+                                <TitleIcon />
+                            </ListItemIcon>
+                            <ListItemText primary="Project Heading" />
+                        </ListItemButton>
                         <ListItemButton
                             onClick={() =>
                                 router.visit(route("dashboard-project"))

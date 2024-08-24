@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { useForm, usePage } from "@inertiajs/react";
+import { useForm, usePage, router } from "@inertiajs/react";
 import { SpinnerContext } from "@/Context/SpinnerContext";
 import { AlertContext } from "@/Context/AlertContext";
 import { Box, TextField, Button } from "@mui/material";
@@ -29,6 +29,22 @@ function ProjectEdit() {
             },
             onError: () => {
                 console.log(errors);
+                toggleSpinner(false);
+            },
+        });
+    };
+
+    const onHandleDelete = (e) => {
+        e.preventDefault();
+        router.delete(route("project-destroy", item.id), {
+            onStart: () => {
+                toggleSpinner(true);
+            },
+            onSuccess: () => {
+                toggleSpinner(false);
+                toggleAlert(true);
+            },
+            onError: () => {
                 toggleSpinner(false);
             },
         });
@@ -174,13 +190,23 @@ function ProjectEdit() {
                             type="file"
                         />
                     </Box>
-                    <Button
-                        variant="contained"
-                        component="button"
-                        type="submit"
-                    >
-                        Save
-                    </Button>
+                    <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
+                        <Button
+                            variant="contained"
+                            component="button"
+                            type="submit"
+                        >
+                            Save
+                        </Button>
+                        <Button
+                            onClick={onHandleDelete}
+                            color="error"
+                            variant="contained"
+                            component="button"
+                        >
+                            Delete
+                        </Button>
+                    </Box>
                 </form>
             </Box>
         </Layouts>
