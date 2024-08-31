@@ -18,10 +18,10 @@
         <div class="container-fluid custom-padding">
             <div class="row">
                 <div class="col-12 text-center text-md-start col-md-9 d-flex align-items-center justify-content-center justify-content-md-start">
-                    <h2>Our Projects <br> We Worked On</h2>
+                    <h2>{{ $projectHeading->heading }}</h2>
                 </div>
                 <div class="col-12 col-md-3 text-md-end text-center">
-                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eaque repellat illo excepturi rerum fuga rem eius unde.</p>
+                    <p>{{ $projectHeading->short_description }}</p>
                 </div>
 
             </div>
